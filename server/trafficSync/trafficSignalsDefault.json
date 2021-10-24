@@ -1,0 +1,46 @@
+{
+  "states": {
+    "green": {
+      "action": 1,
+      "lights": ["black", "black", "green"]
+    },
+    "yellow": {
+      "action": 0.5,
+      "lights": ["black", "yellow", "black"]
+    },
+    "red": {
+      "action": 0,
+      "lights": ["red", "black", "black"]
+    },
+    "redYellow": {
+      "action": 0,
+      "lights": ["red", "yellow", "black"]
+    }
+  },
+  "types": {
+    "lightsBasic": {
+      "name": "Basic Lights",
+      "defaultIdx": 3,
+      "timings": [
+        {"type": "green", "duration": 15},
+        {"type": "yellow", "duration": 4},
+        {"type": "red", "duration": 1}
+      ]
+    },
+    "lightsBasicEU": {
+      "name": "Basic Lights (EU)",
+      "defaultIdx": 4,
+      "timings": [
+        {"type": "redYellow", "duration": 1},
+        {"type": "green", "duration": 15},
+        {"type": "yellow", "duration": 4},
+        {"type": "red", "duration": 1}
+      ]
+    },
+    "signStop": {
+      "name": "Basic Stop",
+      "type": "stop",
+      "action": 0.1
+    }
+  }
+}

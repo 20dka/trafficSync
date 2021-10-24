@@ -1,0 +1,2 @@
+load("trafficSync")
+registerCoreModule("trafficSync")
