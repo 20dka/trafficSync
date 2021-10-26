@@ -494,29 +494,6 @@ local function onDeserialized(data)
   active = data.active
 end
 
--- public interface
-M.newIntersection = newIntersection
-M.newSignalController = newSignalController
-M.defaultSignalController = defaultSignalController
-M.getIntersections = getIntersections
-M.getControllers = getControllers
-M.getSignalMetadata = getSignalMetadata
-M.getSignalObjects = getSignalObjects
-M.build = buildNodeDict
-M.loadSignals = loadSignals
-M.setupSignals = setupSignals
-M.getValues = getValues
-M.resetTimer = resetTimer
-M.setActive = setActive
-M.setDebugMode = setDebugMode
-
-M.onExtensionLoaded = onExtensionLoaded
-M.onUpdate = onUpdate
-M.onClientEndMission = onClientEndMission
-M.onSerialize = onSerialize
-M.onDeserialized = onDeserialized
-
---return M
 
 
 function sendLightDataToClients(controllerName, signalIndex, lightIndex)
@@ -538,7 +515,7 @@ local function getMapName(s)
   if not c then return nil end
 
   c =c:sub(2,#c-1)
-  c = c:match( "^/levels/(.+)/" )
+  c = c:match( "^/-levels/(.+)/" )
 
   return c
 end
@@ -559,9 +536,9 @@ function onInit()
 			RegisterEvent("updateTimer", "updateTimer")
 			CreateThread("updateTimer", 10)
 		else
-			log('failed to load plugin')
+			log('failed to load plugin, (wrong path?)')
 		end
 	else
-		log("oopsie map cant be parsed")
+		log("oopsie map can't be parsed")
 	end
 end

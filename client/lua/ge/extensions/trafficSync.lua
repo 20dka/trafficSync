@@ -18,6 +18,7 @@ local function receiveTrafficSync(d)
 	local c = controllers[d[1]]
 	if not c then return end
 
+	core_trafficSignals.setActive(false)
 	c:setSignal(tonumber(d[2]),tonumber(d[3]))
 end
 
@@ -28,7 +29,14 @@ local function onExtensionLoaded()
 	core_trafficSignals.setActive(false)
 end
 
+local function onPreRender()
+	if not core_trafficSignals then return end
+	if core_trafficSignals.getValues().state == true then
+		onExtensionLoaded()
+	end
+end
 
+M.onPreRender = onPreRender
 M.onExtensionLoaded = onExtensionLoaded
 
 print("trafficSync loaded")
